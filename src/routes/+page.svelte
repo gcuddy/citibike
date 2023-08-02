@@ -74,11 +74,13 @@
     return null;
   };
 
-  onMount(find)
+  onMount(find);
 </script>
 
 {#if finding}
   loading...
+{:else}
+  <button on:click={find}> {!!station ? 'Find again' : 'Find nearest Empty Citibike'} </button>
 {/if}
 
 {#if station}
@@ -98,10 +100,6 @@
   <pre>
     {JSON.stringify(station, null, 2)}
   </pre>
-{/if}
-
-{#if !finding}
-  <button on:click={find}> Find nearest Empty Citibike </button>
 {/if}
 
 <style>
